@@ -85,8 +85,8 @@
             
             @if(Route::has('login'))
             @auth 
-            {{-- <x-app-layout>
-            </x-app-layout> --}}
+            <x-app-layout>
+            </x-app-layout>
             @else
             <li class="nav-item">
               <a class="btn btn-primary ml-lg-3" href="{{ route('login') }}">Login </a>
@@ -167,7 +167,7 @@
 
   @include('user.latestNews')
 
- @include('user.appointment')
+  @include('user.appointment')
 
   <div class="page-section banner-home bg-image" style="background-image: url(../assets/img/banner-pattern.svg);">
     <div class="container py-5 py-lg-0">
@@ -200,3 +200,4 @@
   
 </body>
 </html>
+ggggggggggggggggggggggggggggggggg
