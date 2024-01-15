@@ -111,8 +111,9 @@
       {{session()->get('message')}}
   </div>
   @endif
-
-  <div class="container-xxl" style="width: 1000px;margin-top: 100px;height: fit-content;margin-left: 305px;"> 
+  {{-- style="width: 1000px;margin-top: 100px;height: fit-content;margin-left: 305px;" --}}
+  <div style="margin-top: 80px" > 
+    <h1 style="font-size:20;font-weight:600;margin-left: 750px ; margin-bottom:10px">My Appointment</h1>
     <table class="table table-hover" >
         <thead>
           <tr>
@@ -122,18 +123,28 @@
             <th scope="col">Date</th>
             <th scope="col">Message</th>
             <th scope="col">Status</th>
+            <th scope="col">Cancel</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>uyuiy</td>
-            <td>uyuiy</td>
-            <td>uyuiy</td>
-          </tr>
-          </tr>
+            @if ($appointments->count() > 0)
+            @foreach($appointments as $appointment)
+                <tr>
+                    <th scope="row">{{ $loop->iteration }}</th>
+                    <td>{{ $appointment->doctor }}</td>
+                    <td>{{ $appointment->name }}</td>
+                    <td>{{ $appointment->date }}</td>
+                    <td>{{ $appointment->message }}</td>
+                    <td>{{ $appointment->status }}</td>
+                    <td><a href="{{url('cancel_appoint')}}" class="bt btn-danger">Cancel</a></td>
+                </tr>
+            @endforeach
+        @else
+            <tr>
+                <td colspan="6">No appointments found for the user.</td>
+            </tr>
+        @endif
+        
         </tbody>
       </table>
   </div>
