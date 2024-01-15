@@ -81,6 +81,8 @@ class HomeController extends Controller
 
     public function cancel_appoint($id)
     {
-        
+        $data=Appointment::find($id);
+        $data->delete();
+        return redirect()->back()->with('message','Appointment cancelled successfully');
     }
 }
