@@ -24,7 +24,16 @@
 
             <h2 style="padding-bottom:50px; align-items:center">Add Doctor</h2>
 
-            <form action="{{url('upload_doctor')}}"  method="" enctype="multipart/form-data">
+            @if(session()->has('message'))
+
+            <div class="alert alert-success">
+                <button  type="button" class="close" data-dismiss="alert">X</button>
+                {{session()->get('message')}}
+            </div>
+            @endif  
+
+            <form action="{{url('upload_doctor')}}"  method="POST" enctype="multipart/form-data">
+                @csrf
                 <div class="form-row">
                   <div class="form-group col-md-6">
                     <label for="inputEmail4">Email</label>
@@ -35,9 +44,16 @@
                     <input type="password" class="form-control" id="inputPassword4" placeholder="Password" name="password">
                   </div>
                 </div>
-                <div class="form-group">
-                  <label for="inputAddress">Address</label>
-                  <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" name="address">
+                <div class="form-row">
+                  
+                    <div class="form-group col-md-6">
+                        <label for="inputname4">Full Name</label>
+                        <input type="text" class="form-control" id="inputname4" placeholder="Full Name" name="name">
+                      </div>
+                  <div class="form-group col-md-6">
+                    <label for="inputAddress">Address</label>
+                    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" name="address">
+                  </div>
                 </div>
                 <div class="form-row">
                     
@@ -46,10 +62,10 @@
                     <input type="text" class="form-control" id="phone" name="phone" placeholder="0788000000">
                   </div>
                   <div class="form-group col-md-4">
-                    <label for="specialist">Spaecialist</label>
-                    <select id="specialist" class="form-control" name="specialist" style="">
+                    <label for="inputspecialist4">Spaecialist</label>
+                    <select id="inputspecialist4" class="form-control" name="specialist" style="">
                       <option selected>--select--</option>
-                      <option value="Lung">Lung</option>
+                        <option value="Lung">Lung</option>
                         <option value="Pancreatic">Pancreatic</option>
                         <option value="Prostate">Prostate</option>
                         <option value="Breast">Breast</option>
