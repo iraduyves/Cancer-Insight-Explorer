@@ -85,8 +85,10 @@
             
              @if(Route::has('login'))
             @auth 
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url('myappointment') }}" style="background-color:#00D9A5">My Appointment </a>
+            </li>
             <x-app-layout/>
-            {{-- <h1>Logged in </h1> --}}
             @else 
             <li class="nav-item">
               <a class="btn btn-primary ml-lg-3" href="{{ route('login') }}">Login </a>
