@@ -55,12 +55,17 @@ class HomeController extends Controller
         $data->date = $request->date;
         $data->phone = $request->phone;
         $data->doctor = $request->doctor;
+        $data->message = $request->message;
         $data->status = 'In progress';
         if(Auth::id())
-        $data->user_id = Auth::user()->id;
         {
+            $data->user_id = Auth::user()->id;
 
         }
+
+        $data->save();
+
+        return redirect()->back()->with('message', 'Appointment added successfully. we will contact you soon.');
 
     }
 }
