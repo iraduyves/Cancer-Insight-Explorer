@@ -83,11 +83,11 @@
               <a class="nav-link" href="contact.html">Contact</a>
             </li>
             
-            @if(Route::has('login'))
+             @if(Route::has('login'))
             @auth 
-            <x-app-layout>
-            </x-app-layout>
-            @else
+            <x-app-layout/>
+            {{-- <h1>Logged in </h1> --}}
+            @else 
             <li class="nav-item">
               <a class="btn btn-primary ml-lg-3" href="{{ route('login') }}">Login </a>
             </li>
@@ -95,7 +95,7 @@
               <a class="btn btn-primary ml-lg-3" href="{{ route('register') }}">Register</a>
             </li>
             @endauth
-            @endif
+            @endif 
           </ul>
         </div> <!-- .navbar-collapse -->
       </div> <!-- .container -->

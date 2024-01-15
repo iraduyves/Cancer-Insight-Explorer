@@ -966,7 +966,9 @@ a.text-dark:hover, a.text-dark:focus {
     align-items: center;
   }
 }
-
+.collapse {
+  visibility:  visible !important; 
+}
 @media (min-width: 992px) {
   .navbar-expand-lg .navbar-nav {
     margin-top: 0;
