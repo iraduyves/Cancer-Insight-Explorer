@@ -66,7 +66,7 @@
         </a>
       </li>
       <li class="nav-item menu-items">
-        <a class="nav-link" href="{{url('add_doctor_view')}}">
+        <a class="nav-link" href="{{url('showappointment')}}">
           <span class="menu-icon">
             <i class="mdi mdi-file-document-box"></i>
           </span>

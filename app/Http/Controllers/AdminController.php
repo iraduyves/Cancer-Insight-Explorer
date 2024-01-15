@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Appointment;
 use Illuminate\Http\Request;
 use App\Models\Doctor;
 use Illuminate\Support\Facades\Storage;
@@ -55,5 +56,19 @@ class AdminController extends Controller
             return redirect()->back()->with('error', 'Error uploading image.');
         }
     }
+
+    public function showappointment()
+    {
+        $data=Appointment::all();
+        return view('admin.showappointment',compact('data'));
+    }
     
+    public function approve($id)
+    {
+        $data=Appointment::find($id);
+        $data->status='Approved';
+        $data->save();
+
+        return redirect()->back()->with('message', 'Appointment approved successfully.');
+    }
 }
