@@ -62,7 +62,14 @@ class AdminController extends Controller
         $data=Appointment::all();
         return view('admin.showappointment',compact('data'));
     }
-    
+    public function cancel($id)
+    {
+        $data=Appointment::find($id);
+
+        $data->status='Cancelled';
+        $data->save();
+        return redirect()->back()->with('message', 'Appointment cancelled successfully.');
+    }
     public function approve($id)
     {
         $data=Appointment::find($id);
