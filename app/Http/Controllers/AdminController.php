@@ -78,4 +78,10 @@ class AdminController extends Controller
 
         return redirect()->back()->with('message', 'Appointment approved successfully.');
     }
+
+    public function emailview($id)
+    {
+        $data=Appointment::all();
+        return view('admin.email_view',compact('data'));
+    }
 }

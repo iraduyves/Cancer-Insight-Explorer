@@ -40,6 +40,7 @@
                   <th scope="col">Status</th>
                   <th scope="col">Cancel</th>
                   <th scope="col">Approve</th>
+                  <th scope="col">Send Mail</th>
                 </tr>
               </thead>
               <tbody>
@@ -54,6 +55,7 @@
                           <td>{{ $appointment->status }}</td>
                           <td><a href="{{url('cancel',$appointment->id)}}" class="bt btn-danger" >Cancel</a></td>
                           <td><a href="{{url('approve',$appointment->id)}}" class="bt btn-success" >Approve</a></td>
+                          <td><a href="{{url('emailview',$appointment->id)}}" class="bt btn-primary" >Send mail</a></td>
                       </tr>
                   @endforeach
               @else
