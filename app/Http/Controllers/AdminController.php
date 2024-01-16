@@ -104,4 +104,10 @@ class AdminController extends Controller
 
         return redirect()->back()->with('message', 'Email sent successfully.');
     }
+
+    public function showdoctor()
+    {
+        $data = doctor::all();
+        return view('admin.showdoctor',compact('data'));
+    }
 }
