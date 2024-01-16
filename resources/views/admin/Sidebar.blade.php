@@ -56,7 +56,7 @@
       <li class="nav-item nav-category">
         <span class="nav-link">Navigation</span>
       </li>
-uhgsbbcvkkkkkkkkkkkkj
+uhgsbbcvkkkkkkkkkkkk
       <li class="nav-item menu-items">
         <a class="nav-link" href="{{url('add_doctor_view')}}">
           <span class="menu-icon">
