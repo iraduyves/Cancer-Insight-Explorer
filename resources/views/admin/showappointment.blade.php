@@ -1,80 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <style type="text/css">
-    /* label{
+        /* label{
         display: inline-block;
         width: 200px;
     } */
     </style>
-   @include('admin.css')
-  </head>
-  <body>
+    @include('admin.css')
+</head>
+
+<body>
     <div class="container-scroller">
-      <!-- partial:partials/_sidebar.html -->
-      @include('admin.Sidebar')
-      <!-- partial -->
-      <div class="container-fluid page-body-wrapper">
-        <!-- partial:partials/_navbar.html -->
-       @include('admin.Navbar')
-        <!-- partial -->
-      <div class="container-fluid page-body-wrapper">
-      <div style="margin-top: 80px" >
-        @if(session()->has('message'))
+        @include('admin.Sidebar')
+        <div class="container-fluid page-body-wrapper">
+            @include('admin.Navbar')
+            <div class="main-panel">
+                <div class="content-wrapper">
+                    <div class="row ">
+                        <div class="col-12 grid-margin">
+                            <div class="card">
+                                @if (session()->has('message'))
+                                    <div class="alert alert-success">
+                                        <button type="button" class="close" data-dismiss="alert">X</button>
+                                        {{ session()->get('message') }}
+                                    </div>
+                                @endif
+                                <div class="card-body">
+                                    <h4 class="card-title">All Patient's Appointment</h4>
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">#</th>
+                                                    <th scope="col">Doctor's Name</th>
+                                                    <th scope="col">Patient's Name</th>
+                                                    <th scope="col">AppointmentDate</th>
+                                                    <th scope="col">Message</th>
+                                                    <th scope="col">Status</th>
+                                                    <th scope="col">Cancel</th>
+                                                    <th scope="col">Approve</th>
+                                                    <th scope="col">Send Mail</th>
 
-        <div class="alert alert-success">
-            <button  type="button" class="close" data-dismiss="alert">X</button>
-            {{session()->get('message')}}
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @if ($data->count() > 0)
+                                                    @foreach ($data as $appointment)
+                                                        <tr>
+                                                            <th scope="row">{{ $loop->iteration }}</th>
+                                                            <td>{{ $appointment->doctor }}</td>
+                                                            <td>{{ $appointment->name }}</td>
+                                                            <td>{{ $appointment->date }}</td>
+                                                            <td>{{ $appointment->message }}</td>
+                                                            <td>{{ $appointment->status }}</td>
+                                                            <td><a href="{{ url('cancel', $appointment->id) }}"
+                                                                    class="badge badge-outline-danger">Cancel</a>
+                                                            </td>
+                                                            <td><a href="{{ url('approve', $appointment->id) }}"
+                                                                    class="badge badge-outline-success">Approve</a></td>
+                                                            <td><a href="{{ url('emailview', $appointment->id) }}"
+                                                                    class="badge badge-outline-success">Send
+                                                                    mail</a></td>
+                                                        </tr>
+                                                    @endforeach
+                                                @else
+                                                    <tr>
+                                                        <td colspan="6">No appointments found for the user.</td>
+                                                    </tr>
+                                                @endif
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        @endif   
-    
-        <h1 style="font-size:20;font-weight:600; margin-bottom:10px">My Appointment</h1>
-        <table class="table table-hover" >
-            <thead>
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Doctor</th>
-                  <th scope="col">Name</th>
-                  <th scope="col">Date</th>
-                  <th scope="col">Message</th>
-                  <th scope="col">Status</th>
-                  <th scope="col">Cancel</th>
-                  <th scope="col">Approve</th>
-                  <th scope="col">Send Mail</th>
-                </tr>
-              </thead>
-              <tbody>
-                  @if ($data->count() > 0)
-                  @foreach($data as $appointment)
-                      <tr>
-                          <th scope="row">{{ $loop->iteration }}</th>
-                          <td>{{ $appointment->doctor }}</td>
-                          <td>{{ $appointment->name }}</td>
-                          <td>{{ $appointment->date }}</td>
-                          <td>{{ $appointment->message }}</td>
-                          <td>{{ $appointment->status }}</td>
-                          <td><a href="{{url('cancel',$appointment->id)}}" class="bt btn-danger" >Cancel</a></td>
-                          <td><a href="{{url('approve',$appointment->id)}}" class="bt btn-success" >Approve</a></td>
-                          <td><a href="{{url('emailview',$appointment->id)}}" class="bt btn-primary" >Send mail</a></td>
-                      </tr>
-                  @endforeach
-              @else
-                  <tr>
-                      <td colspan="6">No appointments found for the user.</td>
-                  </tr>
-              @endif
-              
-              </tbody>
-        </table>
-      </div>
-
-        <!-- main-panel ends -->
-      </div>
-      <!-- page-body-wrapper ends -->
     </div>
-    <!-- container-scroller -->
-    <!-- plugins:js -->
-   @include('admin.script')
-    <!-- End custom js for this page -->
-  </body>
+    @include('admin.script')
+</body>
+
 </html>

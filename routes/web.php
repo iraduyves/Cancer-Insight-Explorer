@@ -35,6 +35,7 @@ Route::get('/approve/{id}',[AdminController::class,'approve']);
 Route::get('/emailview/{id}',[AdminController::class,'emailview']);
 Route::post('/sendmail/{id}',[AdminController::class,'sendmail']);
 Route::get('/showdoctor',[AdminController::class,'showdoctor']);
+Route::get('/showuser',[AdminController::class,'showuser']);
 
 
 Route::post('/appointment',[HomeController::class,'appointment']);
