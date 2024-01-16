@@ -2,12 +2,7 @@
 <html lang="en">
 
 <head>
-    <style type="text/css">
-        label {
-            display: inline-block;
-            width: 200px;
-        }
-    </style>
+
     @include('admin.css')
 </head>
 
@@ -28,7 +23,7 @@
                                     <div class="table-responsive">
                                         <table class="table">
                                             <thead>
-                                                <tr>   
+                                                <tr>
                                                     <th> #</th>
                                                     <th> image </th>
                                                     <th> Doctor's Name </th>
@@ -36,25 +31,41 @@
                                                     <th> Doctor's Phone </th>
                                                     <th> Doctor's Address </th>
                                                     <th> Doctor's Speciality </th>
+                                                    <th> Update  </th>
+                                                    <th> Delete  </th>
 
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>
-                                                        <img src="admin/assets/images/faces/face1.jpg" alt="image" />
-                                                    
-                                                    </td>
-                                                    <td>
-                                                        <span class="pl-2"></span>
-                                                    </td>
-                                                    <td>  </td>
-                                                    <td>  </td>
-                                                    <td>  </td>
-                                                    <td>  </td>
-                                                  
-                                                </tr>
+                                                @if ($data->count() > 0)
+                                                    @foreach ($data as $doctor)
+                                                        <tr>
+                                                            <th scope="row">{{ $loop->iteration }}</th>
+                                                            <td>
+                                                                <img src="doctorimage/{{$doctor->image}}" alt="image" />
+                                                            </td>
+                                                            <td>
+                                                                <span class="pl-2">{{ $doctor->name }}</span>
+                                                            </td>
+
+                                                            <td>{{ $doctor->email }} </td>
+                                                            <td>{{ $doctor->phone }} </td>
+                                                            <td>{{ $doctor->address }} </td>
+                                                            <td>{{ $doctor->specialist }} </td>
+                                                            <td>
+                                                                <div class="badge badge-outline-success">Update</div>
+                                                              </td>
+                                                              <td>
+                                                                <div class="badge badge-outline-danger">Delete</div>
+                                                              </td>
+                                                        </tr>
+                                                    @endforeach
+                                                @else
+                                                    <tr>
+                                                        <td colspan="6">No Data found for the Doctors.</td>
+                                                    </tr>
+                                                @endif
+
 
                                             </tbody>
                                         </table>
