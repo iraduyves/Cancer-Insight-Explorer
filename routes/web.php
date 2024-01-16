@@ -36,6 +36,7 @@ Route::get('/emailview/{id}',[AdminController::class,'emailview']);
 Route::post('/sendmail/{id}',[AdminController::class,'sendmail']);
 Route::get('/showdoctor',[AdminController::class,'showdoctor']);
 Route::get('/showuser',[AdminController::class,'showuser']);
+Route::get('/deleteuser/{id}',[AdminController::class,'deleteuser']);
 
 
 Route::post('/appointment',[HomeController::class,'appointment']);
