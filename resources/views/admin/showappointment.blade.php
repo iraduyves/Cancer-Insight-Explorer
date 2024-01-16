@@ -27,6 +27,13 @@
                                         {{ session()->get('message') }}
                                     </div>
                                 @endif
+
+                                @if (session()->has('error'))
+                                    <div class="alert alert-danger">
+                                        <button type="button" class="close" data-dismiss="alert">X</button>
+                                        {{ session()->get('error') }}
+                                    </div>
+                                @endif
                                 <div class="card-body">
                                     <h4 class="card-title">All Patient's Appointment</h4>
                                     <div class="table-responsive">

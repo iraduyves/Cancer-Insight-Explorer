@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Notification;
 use Mockery\Matcher\Not;
+use Illuminate\Support\Facades\Session;
 
 class AdminController extends Controller
 {
@@ -119,20 +120,47 @@ class AdminController extends Controller
         return view('admin.showuser', compact('data'));
     }
 
+    // public function deleteuser($id)
+    // {
+
+    //     $userToDelete = User::find($id);
+        
+    //     if ($userToDelete && $userToDelete->usertype == 0) {
+    //         if ($userToDelete->id !== Auth::id()) {
+    //             $userToDelete->delete();
+    //             return redirect()->back()->with('message', 'User deleted successfully.');
+    //         } else {
+    //             return redirect()->back()->with('error', 'You cannot delete your own account.');
+    //         }
+    //     } else {
+    //         return redirect()->back()->with('error', 'Invalid user or user type.');
+    //     }
+
+    //     dd(session('message'));
+    // }
+
     public function deleteuser($id)
-    {
+{
+    $data = User::find($id);
 
-        $userToDelete = User::find($id);
+    if ($data) {
+        if ($data->usertype == 0) {
+            if ($data->id !== Auth::id()) {
+                $data->delete();
+                Session::flash('message', 'User deleted successfully.');
 
-        if ($userToDelete && $userToDelete->usertype == 0) {
-            if ($userToDelete->id !== Auth::id()) {
-                $userToDelete->delete();
-                return redirect()->back()->with('message', 'User deleted successfully.');
+                return redirect()->back();
             } else {
-                return redirect()->back()->with('error', 'You cannot delete your own account.');
+                Session::flash('error', 'You cannot delete your own account.');
+                return redirect()->back();
             }
         } else {
-            return redirect()->back()->with('error', 'Invalid user or user type.');
+            Session::flash('error', 'You Cannot delete this user unless You are Super Admin.');
+            return redirect()->back();
         }
+    } else {
+        Session::flash('error', 'User not found.');
+        return redirect()->back();
     }
+}
 }

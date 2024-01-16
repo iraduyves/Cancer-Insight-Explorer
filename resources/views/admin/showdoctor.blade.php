@@ -19,11 +19,18 @@
                         <div class="col-12 grid-margin">
                             <div class="card">
                                 @if (session()->has('message'))
-                                    <div class="alert alert-success">
-                                        <button type="button" class="close" data-dismiss="alert">X</button>
-                                        {{ session()->get('message') }}
-                                    </div>
-                                @endif
+                                <div class="alert alert-success">
+                                    <button type="button" class="close" data-dismiss="alert">X</button>
+                                    {{ session()->get('message') }}
+                                </div>
+                            @endif
+
+                            @if (session()->has('error'))
+                                <div class="alert alert-danger">
+                                    <button type="button" class="close" data-dismiss="alert">X</button>
+                                    {{ session()->get('error') }}
+                                </div>
+                            @endif
                                 <div class="card-body">
                                     <h4 class="card-title">Our Doctors</h4>
                                     <div class="table-responsive">
@@ -63,7 +70,7 @@
                                                                 <div class="badge badge-outline-success">Update</div>
                                                             </td>
                                                             <td>
-                                                                <div class="badge badge-outline-danger">Delete</div>
+                                                                <a href="{{ url('deletedoctor', $doctor->id) }}" class="badge badge-outline-danger">Delete</a>
                                                             </td>
                                                         </tr>
                                                     @endforeach
