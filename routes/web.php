@@ -33,6 +33,7 @@ Route::get('/showappointment',[AdminController::class,'showappointment']);
 Route::get('/cancel/{id}',[AdminController::class,'cancel']);
 Route::get('/approve/{id}',[AdminController::class,'approve']);
 Route::get('/emailview/{id}',[AdminController::class,'emailview']);
+Route::post('/sendmail/{id}',[AdminController::class,'sendmail']);
 
 
 Route::post('/appointment',[HomeController::class,'appointment']);

@@ -32,7 +32,7 @@
 
                     <h1 style="font-size:20;font-weight:600; margin-bottom:10px">My Appointment</h1>
 
-                    <form action="{{ url('upload_doctor') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ url('sendmail',$data->id) }}" method="POST">
                         @csrf
                         <div class="form-row">
                             <div class="form-group col-md-12">

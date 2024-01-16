@@ -5,9 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\Appointment;
 use Illuminate\Http\Request;
 use App\Models\Doctor;
+use App\Notifications\SendEmailNotification;
+use Illuminate\Notifications\Events\NotificationSent;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Log;
-
+use Illuminate\Support\Facades\Notification;
+use Mockery\Matcher\Not;
 
 class AdminController extends Controller
 {
@@ -81,7 +84,23 @@ class AdminController extends Controller
 
     public function emailview($id)
     {
-        $data=Appointment::all();
+        $data=Appointment::find($id);
         return view('admin.email_view',compact('data'));
+    }
+
+    public function sendmail(Request $request,$id)
+    {
+        $data=Appointment::find($id);
+        $details = [
+            'greeting' => $request->name,
+            'body' => $request->body,
+            'actiontext' => $request->actiontext,
+            'actionurl' => $request->actionurl,
+            'endpart' =>$request->endpart,
+        ];
+
+        Notification::send($data, new SendEmailNotification($details));
+
+        return redirect()->back()->with('message', 'Email sent successfully.');
     }
 }
