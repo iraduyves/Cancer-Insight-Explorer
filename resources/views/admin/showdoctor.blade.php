@@ -67,7 +67,7 @@
                                                             <td>{{ $doctor->address }} </td>
                                                             <td>{{ $doctor->specialist }} </td>
                                                             <td>
-                                                                <div class="badge badge-outline-success">Update</div>
+                                                                <a href="{{ url('updatedoctor', $doctor->id) }}"  class="badge badge-outline-success">Update</a>
                                                             </td>
                                                             <td>
                                                                 <a href="{{ url('deletedoctor', $doctor->id) }}" class="badge badge-outline-danger">Delete</a>

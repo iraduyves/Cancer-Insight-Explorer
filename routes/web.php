@@ -38,6 +38,8 @@ Route::get('/showdoctor',[AdminController::class,'showdoctor']);
 Route::get('/showuser',[AdminController::class,'showuser']);
 Route::get('/deleteuser/{id}',[AdminController::class,'deleteuser']);
 Route::get('/deletedoctor/{id}',[AdminController::class,'deletedoctor']);
+Route::get('/updatedoctor/{id}',[AdminController::class,'updatedoctor']);
+Route::post('/editdoctor/{id}',[AdminController::class,'editdoctor']);
 
 
 Route::post('/appointment',[HomeController::class,'appointment']);

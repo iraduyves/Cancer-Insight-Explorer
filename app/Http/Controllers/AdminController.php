@@ -171,4 +171,53 @@ class AdminController extends Controller
         return redirect()->back();
     }
 
+
+    public function updatedoctor($id)
+    {
+        $doctor = Doctor::find($id);
+        return view('admin.updatedoctor', compact('doctor'));
+        
+    }
+
+    public function editdoctor(Request $request, $id)
+    {
+        $doctor = new Doctor;
+
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required|min:8',
+            'name' => 'required',
+            'address' => 'required',
+            'phone' => 'required',
+            'specialist' => 'required',
+            'file' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+
+
+        $image = $request->file('file');
+        $imageName = time() . '.' . $image->getClientOriginalExtension();
+
+        if ($image->move(public_path('doctorimage'), $imageName)) {
+            $doctor->email = $request->email;
+            $doctor->password = $request->password;
+            $doctor->name = $request->name;
+            $doctor->address = $request->address;
+            $doctor->phone = $request->phone;
+            $doctor->specialist = $request->specialist;
+            $doctor->image = $imageName;
+
+            $doctor->save();
+
+
+            Log::info('Doctor updated successfully.');
+
+            return redirect()->back()->with('message', 'Doctor updated successfully.');
+        } else {
+            Log::error('Error moving image.');
+
+            return redirect()->back()->with('error', 'Error uploading image.');
+        }
+
+    }
+
 }

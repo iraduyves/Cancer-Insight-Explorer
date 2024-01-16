@@ -2,12 +2,7 @@
 <html lang="en">
 
 <head>
-    <style type="text/css">
-        /* label{
-        display: inline-block;
-        width: 200px;
-    } */
-    </style>
+  <base href="/public">
     @include('admin.css')
 </head>
 
@@ -35,39 +30,40 @@
                                     </div>
                                 @endif
                                 <div class="card-body">
-                                    <h4 class="card-title">All Patient's Appointment</h4>
-                                    <form action="{{url('upload_doctor')}}"  method="POST" enctype="multipart/form-data">
+                                    <h4 class="card-title">Add Doctor</h4>
+                                    <form action="{{url('editdoctor',$doctor->id)}}"  method="POST" enctype="multipart/form-data">
                                         @csrf
                                         <div class="form-row">
                                           <div class="form-group col-md-6">
                                             <label for="inputEmail4">Email</label>
-                                            <input type="email" class="form-control" id="inputEmail4" placeholder="Email" name="email">
+                                            <input type="email" value="{{$doctor->email}}" class="form-control" id="inputEmail4" placeholder="Email" name="email" style="color: black">
+                                            
                                           </div>
                                           <div class="form-group col-md-6">
                                             <label for="inputPassword4">Password</label>
-                                            <input type="password" class="form-control" id="inputPassword4" placeholder="Password" name="password">
+                                            <input type="password" value="{{$doctor->password}}" class="form-control" id="inputPassword4" placeholder="Password" name="password"  style="color: black">
                                           </div>
                                         </div>
                                         <div class="form-row">
                                           
                                             <div class="form-group col-md-6">
                                                 <label for="inputname4">Full Name</label>
-                                                <input type="text" class="form-control" id="inputname4" placeholder="Full Name" name="name">
+                                                <input type="text" value="{{$doctor->name}}" class="form-control" id="inputname4" placeholder="Full Name" name="name" style="color: black">
                                               </div>
                                           <div class="form-group col-md-6">
                                             <label for="inputAddress">Address</label>
-                                            <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" name="address">
+                                            <input type="text" value="{{$doctor->address}}" class="form-control" id="inputAddress" placeholder="1234 Main St" name="address" style="color: black">
                                           </div>
                                         </div>
                                         <div class="form-row">
                                             
                                           <div class="form-group col-md-4">
                                             <label for="phone">Phone</label>
-                                            <input type="text" class="form-control" id="phone" name="phone" placeholder="0788000000">
+                                            <input type="text" value="{{$doctor->phone}}" class="form-control" id="phone" name="phone" placeholder="0788000000" style="color: black">
                                           </div>
                                           <div class="form-group col-md-4">
                                             <label for="inputspecialist4">Spaecialist</label>
-                                            <select id="inputspecialist4" class="form-control" name="specialist" style="">
+                                            <select id="inputspecialist4" class="form-control" name="specialist" style="color: black">
                                               <option selected>--select--</option>
                                                 <option value="Lung">Lung</option>
                                                 <option value="Pancreatic">Pancreatic</option>
@@ -75,11 +71,18 @@
                                                 <option value="Breast">Breast</option>
                                             </select>
                                           </div>
+                                          
                                           <div class="form-group col-md-4">
                                             <label for="file">Image</label>
-                                            <input type="file" class="form-control" id="file" name="file" style="width: 200px">
+                                            {{-- <img src="doctorimage/{{$doctor->image}}" alt="image" style="width: 200px"> --}}
+                                            <input type="file" value="{{$doctor->image}}" class="form-control" id="file" name="file" style="width: 200px">
                                           </div>
                                         
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                          <label for="files">Image</label>
+                                          <img id="files" src="doctorimage/{{$doctor->image}}" alt="image" style="width: 200px">
+                                          {{-- <input type="file" value="{{$doctor->image}}" class="form-control" id="file" name="file" style="width: 200px"> --}}
                                         </div>
                         
                                         <input type="submit" class="btn btn-success"/>
