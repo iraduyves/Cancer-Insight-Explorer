@@ -14,6 +14,7 @@ use Mockery\Matcher\Not;
 
 class AdminController extends Controller
 {
+    
     public function Addview()
     {
         return view('admin.add_doctor');
@@ -92,7 +93,7 @@ class AdminController extends Controller
     {
         $data=Appointment::find($id);
         $details = [
-            'greeting' => $request->name,
+            'greetings' => $request->greetings,
             'body' => $request->body,
             'actiontext' => $request->actiontext,
             'actionurl' => $request->actionurl,

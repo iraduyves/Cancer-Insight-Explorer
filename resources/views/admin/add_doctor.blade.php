@@ -78,7 +78,7 @@
                 
                 </div>
 
-                <button type="submit" class="btn btn-sucess">Add</button>
+                <input type="submit" class="btn btn-success"/>
               </form>
         </div>
       </div>
