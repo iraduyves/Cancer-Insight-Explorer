@@ -54,4 +54,3 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
         $user->sendEmailVerificationNotification();
     }
 }
-m
