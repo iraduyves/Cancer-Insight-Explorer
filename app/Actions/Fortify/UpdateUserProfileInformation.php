@@ -37,7 +37,6 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
             ])->save();
         }
     }
-
     /**
      * Update the given verified user's profile information.
      *
