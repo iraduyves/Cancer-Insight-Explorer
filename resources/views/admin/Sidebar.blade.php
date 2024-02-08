@@ -72,7 +72,6 @@
           <span class="menu-title">Appointments</span>
         </a>
       </li>
-      
       <li class="nav-item menu-items">
         <a class="nav-link" href="{{url('showdoctor')}}">
           <span class="menu-icon">
