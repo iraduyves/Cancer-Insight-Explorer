@@ -13,8 +13,8 @@ use App\Http\Controllers\AdminController;
 //     return view('LandingPage');
 // });
 
-Route::get('/',[HomeController::class,'index']); 
-Route::get('/home',[HomeController::class,'redirect']); 
+Route::get('/',[HomeController::class,'index']);
+Route::get('/home',[HomeController::class,'redirect']);
 
 
 Route::middleware([
@@ -26,8 +26,8 @@ Route::middleware([
             return view('dashboard');
         })->name('dashboard');
     });
-    
-Route::get('/add_doctor_view',[AdminController::class,'Addview']); 
+
+Route::get('/add_doctor_view',[AdminController::class,'Addview']) ;
 Route::post('/upload_doctor',[AdminController::class,'upload']);
 Route::get('/showappointment',[AdminController::class,'showappointment']);
 Route::get('/cancel/{id}',[AdminController::class,'cancel']);
@@ -44,4 +44,32 @@ Route::post('/editdoctor/{id}',[AdminController::class,'editdoctor']);
 
 Route::post('/appointment',[HomeController::class,'appointment']);
 Route::get('/myappointment',[HomeController::class,'myappointment']);
+Route::get('/cancel_appoint/{id}',[HomeController::class,'cancel_appoint']);
+Route::get('/cancel_appoint/{id}',[HomeController::class,'cancel_appoint']);
+Route::get('/cancel_appoint/{id}',[HomeController::class,'cancel_appoint']);
+Route::get('/cancel_appoint/{id}',[HomeController::class,'cancel_appoint']);
+Route::get('/cancel_appoint/{id}',[HomeController::class,'cancel_appoint']);
+Route::get('/cancel_appoint/{id}',[HomeController::class,'cancel_appoint']);
+Route::get('/cancel_appoint/{id}',[HomeController::class,'cancel_appoint']);
+Route::get('/cancel_appoint/{id}',[HomeController::class,'cancel_appoint']);
+Route::get('/cancel_appoint/{id}',[HomeController::class,'cancel_appoint']);
+Route::get('/cancel_appoint/{id}',[HomeController::class,'cancel_appoint']);
+Route::get('/cancel_appoint/{id}',[HomeController::class,'cancel_appoint']);
+Route::get('/cancel_appoint/{id}',[HomeController::class,'cancel_appoint']);
+Route::get('/cancel_appoint/{id}',[HomeController::class,'cancel_appoint']);
+Route::get('/cancel_appoint/{id}',[HomeController::class,'cancel_appoint']);
+Route::get('/cancel_appoint/{id}',[HomeController::class,'cancel_appoint']);
+Route::get('/cancel_appoint/{id}',[HomeController::class,'cancel_appoint']);
+Route::get('/cancel_appoint/{id}',[HomeController::class,'cancel_appoint']);
+Route::get('/cancel_appoint/{id}',[HomeController::class,'cancel_appoint']);
+Route::get('/cancel_appoint/{id}',[HomeController::class,'cancel_appoint']);
+Route::get('/cancel_appoint/{id}',[HomeController::class,'cancel_appoint']);
+Route::get('/cancel_appoint/{id}',[HomeController::class,'cancel_appoint']);
+Route::get('/cancel_appoint/{id}',[HomeController::class,'cancel_appoint']);
+Route::get('/cancel_appoint/{id}',[HomeController::class,'cancel_appoint']);
+Route::get('/cancel_appoint/{id}',[HomeController::class,'cancel_appoint']);
+Route::get('/cancel_appoint/{id}',[HomeController::class,'cancel_appoint']);
+Route::get('/cancel_appoint/{id}',[HomeController::class,'cancel_appoint']);
+Route::get('/cancel_appoint/{id}',[HomeController::class,'cancel_appoint']);
+Route::get('/cancel_appoint/{id}',[HomeController::class,'cancel_appoint']);
 Route::get('/cancel_appoint/{id}',[HomeController::class,'cancel_appoint']);
