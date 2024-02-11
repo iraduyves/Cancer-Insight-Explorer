@@ -45,4 +45,3 @@ Route::post('/editdoctor/{id}',[AdminController::class,'editdoctor']);
 Route::post('/appointment',[HomeController::class,'appointment']);
 Route::get('/myappointment',[HomeController::class,'myappointment']);
 Route::get('/cancel_appoint/{id}',[HomeController::class,'cancel_appoint']);
-Route::get('/cancel_appoint/{id}',[HomeController::class,'cancel_appoint']);
